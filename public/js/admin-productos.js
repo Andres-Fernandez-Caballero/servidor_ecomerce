@@ -59,22 +59,24 @@ function guardarProducto(event) {
     data.append('descripcion', producto.descripcion);
     data.append('precio', producto.precio);
 
+    console.log('url', url)
+    console.log(data)
 
     fetch(url, {
         method: elements.id.value !== '' ? 'PUT' : 'POST',
         body: data,
         headers: {
-            'Content-Type': 'application/json',
             'Authorization': JSON.parse(localStorage.getItem('usuarioLogueado')).token,
         }
     })
     .then(res => res.json())
     .then(json => {
         
-        window.location.reload();
+      //  window.location.reload();
         console.log(json);
     })
     .catch(error => {
+        console.log(error)
         swal({
             title: 'Error',
             text: error.message,
