@@ -64,6 +64,7 @@ function guardarProducto(event) {
         method: elements.id.value !== '' ? 'PUT' : 'POST',
         body: data,
         headers: {
+            'Content-Type': 'application/json',
             'Authorization': JSON.parse(localStorage.getItem('usuarioLogueado')).token,
         }
     })
